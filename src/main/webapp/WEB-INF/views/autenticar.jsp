@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1	">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projeto Contas</title>
 <!-- Referência da folha de estilos CSS do bootstrap -->
@@ -24,7 +24,11 @@ pageEncoding="UTF-8"%>
 						<p>Entre com as suas credenciais de acesso:</p>
 					</div>
 					
-					<form id="formAutenticar">
+					<div class="text-center text-danger">
+						<h3>${mensagem_erro}</h3>
+					</div>
+					
+					<form id="formAutenticar" method="post" action="autenticar-post">
 					
 						<div class="mb-2">
 							<label>Email de acesso:</label>
@@ -81,10 +85,10 @@ pageEncoding="UTF-8"%>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/localization/messages_pt_BR.min.js"></script>
-	
+
+	<!-- Arquivo JS local -->
 	<script src="resources/js/autenticar.js"></script>
 </body>
 </html>
-
 
 

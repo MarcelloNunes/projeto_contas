@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 import br.com.cotiinformatica.entities.Usuario;
 import br.com.cotiinformatica.factories.ConnectionFactory;
 
@@ -65,10 +64,38 @@ public class UsuarioRepository {
 		}
 		
 		//fechando a conexão
-		connection.close();		
+		connection.close();
 		//retornando o usuário
 		return usuario;
 	}
 	
-}
+	public Usuario find(String email, String senha) throws Exception{
+		
+		Connection connection = ConnectionFactory.getConnection();
+		
+		String query = "select * from usuario where email = ? and senha= ?";
+		
+		PreparedStatement statement = connection.prepareStatement(query);
+		statement.setString(1, email);
+		statement.setString(2, senha);
+		ResultSet resultSet = statement.executeQuery();
+		
+		Usuario usuario = null;
+			if(resultSet.next()) {
+			
+			usuario = new Usuario(); //instanciando
+			usuario.setIdUsuario(resultSet.getInt("idusuario"));
+			usuario.setNome(resultSet.getString("nome"));
+			usuario.setEmail(resultSet.getString("email"));
+		}
+		
+		//fechando a conexão
+		connection.close();		
+		//retornando o usuário
+		return usuario;
+	}
+		
+	}
+	
+	
 
